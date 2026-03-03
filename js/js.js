@@ -1,25 +1,41 @@
-function buscarProduto() {
-    const input = document.querySelector('.buscar');
-    const termo = input.value.trim();
+// Função de pesquisa
+function pesquisar() {
+  const campo = document.getElementById("campoBusca");
+  if (!campo) return;
 
-    if (!termo) return alert("Digite algo para buscar!");
+  const termo = campo.value.trim();
+  if (!termo) {
+    alert("Digite algo para buscar");
+    return;
+  }
 
-    fetch('http://localhost:8080/produtos')
-        .then(res => res.json())
-        .then(produtos => {
-            const ul = document.getElementById('listaProdutos');
-            ul.innerHTML = '';
+  // Atualiza URL com ?busca=termo
+  const newUrl = `${window.location.pathname}?busca=${encodeURIComponent(termo)}`;
+  window.history.replaceState(null, "", newUrl);
 
-            const filtrados = produtos.filter(p => p.nome.toLowerCase().includes(termo.toLowerCase()));
+  // Envia GET
+  const url = `https://jsonplaceholder.typicode.com/posts?q=${encodeURIComponent(termo)}`;
+  console.log("HTTP GET enviado para:", url);
 
-            if (filtrados.length === 0) {
-                ul.innerHTML = '<li>Nenhum produto encontrado</li>';
-            } else {
-                filtrados.forEach(p => {
-                    const li = document.createElement('li');
-                    li.textContent = `${p.nome} - R$ ${p.preco}`;
-                    ul.appendChild(li);
-                });
-            }
-        });
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      console.log("Dados GET recebidos:", data);
+      const resultado = document.getElementById("resultado");
+      if (resultado) {
+        resultado.innerHTML = data.length > 0
+          ? data.map(item => `<p>${item.title}</p>`).join("")
+          : "<p>Nenhum resultado encontrado.</p>";
+      }
+    })
+    .catch(err => console.error("Erro:", err));
+}
+
+// Preenche input e pesquisa se já houver query na URL
+const params = new URLSearchParams(window.location.search);
+const termoQuery = params.get("busca");
+if (termoQuery) {
+  const campo = document.getElementById("campoBusca");
+  if (campo) campo.value = termoQuery;
+  pesquisar();
 }

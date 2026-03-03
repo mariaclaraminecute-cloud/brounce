@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Configurações</title>
+ <link rel="stylesheet" href="../estilo/not.css">
+</head>
+<body>
+
+  <div class="caixa">
+    <h2>Configurações da Conta</h2>
+
+    <label>
+      <input type="checkbox" id="notificacoesEmail">
+      Receber notificações por email
+    </label>
+
+    <label>
+      <input type="checkbox" id="notificacoesApp">
+      Receber notificações no app
+    </label>
+
+    <label for="tema">Tema do site:</label>
+    <select id="tema">
+      <option value="claro">Claro</option>
+      <option value="escuro">Escuro</option>
+    </select>
+
+    <button id="btnSalvar">Salvar Configurações</button>
+
+    <div id="mensagem"></div>
+  </div>
+
+  <script>
+ 
+    let usuario = {
+      notificacoesEmail: true,
+      notificacoesApp: false,
+      tema: "claro"
+    };
+
+    function preencherConfiguracoes() {
+      document.getElementById("notificacoesEmail").checked = usuario.notificacoesEmail;
+      document.getElementById("notificacoesApp").checked = usuario.notificacoesApp;
+      document.getElementById("tema").value = usuario.tema;
+    }
+
+    function atualizarConfiguracoes() {
+      usuario.notificacoesEmail = document.getElementById("notificacoesEmail").checked;
+      usuario.notificacoesApp = document.getElementById("notificacoesApp").checked;
+      usuario.tema = document.getElementById("tema").value;
+
+      document.getElementById("mensagem").innerText = "Configurações salvas com sucesso!";
+      console.log("Dados atualizados do usuário:", usuario);
+    }
+
+    document.getElementById("btnSalvar").addEventListener("click", atualizarConfiguracoes);
+
+    preencherConfiguracoes();
+  </script>
+
+<script src="../js/not.js"></script>
+</body>
+</html>

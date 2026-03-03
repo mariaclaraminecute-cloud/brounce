@@ -4,24 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../estilo/style.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
     <title>Bronce</title>
 </head>
 <body>
 
 <header>
+
     <div class="logo">
         <img src="../fotos/bronce.png" alt="logo">
     </div>
 
-   <div class="busca">
-    <input type="search" class="buscar" placeholder="Buscar...">
+  <div class="busca">
+  <input 
+    type="search" 
+    class="buscar"
+    id="campoBusca"
+    placeholder="Buscar..."
+  >
 
+  <button class="btn-buscar" onclick="pesquisar()">
+    Pesquisar
+  </button>
 </div>
 
-<ul id="listaProdutos"></ul>
+<div id="resultado"></div>
+
+    <ul id="listaProdutos"></ul>
 
     <a href="notificacao.html">
         <img src="../fotos/notificacao.png" alt="not" class="not">
@@ -32,7 +46,9 @@
     </a>
 
     <a href="cadastro.html" class="btn-cadastro">Cadastrar-se</a>
+
 </header>
+
 
 <div class="novo">
     <img src="../fotos/lip.png" alt="lançamento">
@@ -40,16 +56,22 @@
 
 <hr>
 
-<div class="categorias">
-  <a href="../paginas/roupa.html" class="btn-categoria"> Roupa</a>
-  <a href="../paginas/maquiagem.html" class="btn-categoria"> Maquiagem</a>
-  <a href="../paginas/sapato.html" class="btn-categoria">Sapato </a>
-    <a href="../paginas/acessorios.html" class="btn-categoria">  Acessório  </a>
 
+<div class="categorias">
+
+  <a href="../paginas/roupa.html" class="btn-categoria"> Roupa</a>
+
+  <a href="../paginas/maquiagem.html" class="btn-categoria"> Maquiagem</a>
+
+  <a href="../paginas/sapato.html" class="btn-categoria">Sapato </a>
+
+  <a href="../paginas/acessorios.html" class="btn-categoria">  Acessório  </a>
 
 </div>
 
+
 <section class="loja-aleatoria">
+
   <h2 class="titulo-aleatoria">Produtos em Destaque</h2>
 
   <div class="grid-aleatoria">
@@ -69,7 +91,7 @@
       <button>Comprar</button>
     </div>
 
- 
+
     <div class="card-aleatoria">
       <img src="https://images.tcdn.com.br/img/img_prod/1096377/batom_vermelho_vivo_cremoso_46_1029_1_31990f4eff3b4613b7a7c9ae7d381be0.jpg" alt="Batom Vermelho">
       <h3>Batom Vermelho</h3>
@@ -95,7 +117,7 @@
 
 
     <div class="card-aleatoria">
-      <img src="https://www.perfumariasumire.com.br/media/catalog/product/c/o/corretivo_li_quido_ruby_rose_melu_rr18001_c00_.jpg?optimize=medium&bg-color=255,255,255&fit=bounds&height=563&width=553&canvas=553:563" alt="Corretivo líquido">
+      <img src="https://www.perfumariasumire.com.br/media/catalog/product/c/o/corretivo_li_quido_ruby_rose_melu_rr18001_c00_.jpg" alt="Corretivo líquido">
       <h3>Corretivo Líquido</h3>
       <p class="preco-aleatoria">R$ 79,90</p>
       <button>Comprar</button>
@@ -109,15 +131,20 @@
       <button>Comprar</button>
     </div>
 
+
     <div class="card-aleatoria">
       <img src="https://cdn.sistemawbuy.com.br/arquivos/3c62454ab52ef4cdc27aef7d0f2ac0e1/produtos/65566e753c26f/sandalia-feminina-salto-fino-prata-c4-6557d75ae82eb.jpg" alt="Sandália Elegante">
       <h3>Sandália Elegante</h3>
       <p class="preco-aleatoria">R$ 89,90</p>
       <button>Comprar</button>
     </div>
+
   </div>
+
 </section>
-<script src="../js/js.js"></script>
+
+
+<script src="../js/script.js"></script>
 
 </body>
 </html>

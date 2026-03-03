@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../estilo/carrinho.css">
-<title>Carrinho - Bronce</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../estilo/carrinho.css">
+
+  <title>Carrinho - Bronce</title>
 </head>
+
 <body>
 
 <header>
@@ -14,60 +17,12 @@
 
 <section class="carrinho-container">
 
-  <!-- Produto -->
-  <div class="item-carrinho">
-    <img src="../fotos/po.png" alt="Pó Compacto">
+  <ul id="listaCarrinho"></ul>
 
-    <div class="info">
-      <h2>Pó Compacto</h2>
-      <p>R$ 20,90</p>
-
-      <div class="quantidade">
-        <button>-</button>
-        <span>1</span>
-        <button>+</button>
-      </div>
-    </div>
-
-    <div class="remover">
-      <button>Remover</button>
-    </div>
-  </div>
-
-  <div class="resumo">
-    <h3>Total: R$ 20,90</h3>
-    <button class="finalizar">Finalizar Compra</button>
-  </div>
 
 </section>
-<script> const botoesRemover = document.querySelectorAll('.item-carrinho .remover button');
 
-  botoesRemover.forEach(botao => {
-    botao.addEventListener('click', () => {
-      // Seleciona o item do carrinho pai
-      const item = botao.closest('.item-carrinho');
-
-      // Remove o item do DOM
-      item.remove();
-
-      // Atualiza o total
-      atualizarTotal();
-    });
-  });
-
-  function atualizarTotal() {
-    const itens = document.querySelectorAll('.item-carrinho');
-    let total = 0;
-
-    itens.forEach(item => {
-      const precoText = item.querySelector('.info p').textContent;
-      const preco = parseFloat(precoText.replace('R$', '').replace(',', '.'));
-      const quantidade = parseInt(item.querySelector('.quantidade span').textContent);
-      total += preco * quantidade;
-    });
-
-    document.querySelector('.resumo h3').textContent = `Total: R$ ${total.toFixed(2).replace('.', ',')}`;
-  }</script>
+<script src="../js/script.js"></script>
 
 </body>
 </html>

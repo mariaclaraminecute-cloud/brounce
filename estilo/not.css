@@ -1,0 +1,79 @@
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #804e2b, #4c1d06);
+      height: 100vh;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .caixa {
+      background-color: #e7be99;
+      padding: 25px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 350px;
+
+      box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+      text-align: center;
+    }
+
+    .caixa h2 {
+      margin-bottom: 20px;
+      color: #4c1d06;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 12px;
+      color: #4c1d06;
+      font-size: 14px;
+      text-align: left;
+    }
+
+    input[type="checkbox"] {
+      margin-right: 8px;
+    }
+
+    select, input[type="text"], input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 12px;
+      border-radius: 20px;
+      border: none;
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+
+      background-color: #804e2b;
+      color: white;
+
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+
+      font-size: 16px;
+      font-weight: bold;
+
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background-color: #d28a24;
+    }
+
+    #mensagem {
+      margin-top: 15px;
+      font-weight: bold;
+      color: green;
+    }
