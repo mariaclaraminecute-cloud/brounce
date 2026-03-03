@@ -4,81 +4,120 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../estilo/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <title>Bronce</title>
 </head>
 <body>
-    <header>
-        <div class="logo">
+
+<header>
+    <div class="logo">
         <img src="../fotos/bronce.png" alt="logo">
-        </div>
-        <div class="busca">
-                <input type="search" class="buscar" placeholder="Buscar...">
-        </div>
-        <a href="notificacao.html">
-  <img src="../fotos/notificacao.png" alt="not" class="not">
-</a>
- <a href="carrinho.html">
-  <img src="../fotos/carrinho-de-compras.png" alt="car" class="car">
-</a>
-<a href="cadastro.html" class="btn-cadastro">Cadastrar-se</a>
-
-    </header>
-
-    <div class="novo">
-    <img src="../fotos/lip.png" alt="lancamento"> 
     </div>
-      
-    <div class="canto">
-        <hr>
-     
-  <div class="tamanho-container">
-        <h1> CATEGORIAS </h1>
-    <button class="tamanho-btn">TAMANHO</button>
-    <div class="tamanho-opcoes">
-      <div>S</div>
-      <div>M</div>
-      <div>L</div>
-      <div>XL</div>
-    </div>
-  </div>
+
+   <div class="busca">
+    <input type="search" class="buscar" placeholder="Buscar...">
+
 </div>
-        
-      <div class="container">
-        <div class="linha-produtos">
- <div class="container">
-  <div class="linha-produtos">
-    <a href="roupa.html" class="roupa">
-      <img src="../fotos/roupa.png" alt="roupa">
+
+<ul id="listaProdutos"></ul>
+
+    <a href="notificacao.html">
+        <img src="../fotos/notificacao.png" alt="not" class="not">
     </a>
 
-    <a href="padrao.html" class="produto-card">
-      <div class="padrao">
-        <img src="../fotos/po.png" alt="pó">
-      </div>
-      <div class="info">
-        <p class="produto-nome">Pó Compacto</p>
-        <p class="produto-preco">R$ 20,90</p>
-      </div>
+    <a href="carrinho.html">
+        <img src="../fotos/carrinho-de-compras.png" alt="car" class="car">
     </a>
-  </div>
 
-  <a href="sapato.html" class="sapato">
-    <img src="../fotos/sapato.png" alt="sapato">
-  </a>
+    <a href="cadastro.html" class="btn-cadastro">Cadastrar-se</a>
+</header>
 
-  <a href="maquiagem.html" class="maquiagem">
-    <img src="../fotos/maquiagem.png" alt="maquiagem">
-  </a>
-
-  <a href="acessorios.html" class="acessorios">
-    <img src="../fotos/acessorios.png" alt="acessorios">
-  </a>
+<div class="novo">
+    <img src="../fotos/lip.png" alt="lançamento">
 </div>
-<div class="hr">
-        <hr>
-    </div>
-    
 
+<hr>
+
+<div class="categorias">
+  <a href="../paginas/roupa.html" class="btn-categoria"> Roupa</a>
+  <a href="../paginas/maquiagem.html" class="btn-categoria"> Maquiagem</a>
+  <a href="../paginas/sapato.html" class="btn-categoria">Sapato </a>
+    <a href="../paginas/acessorios.html" class="btn-categoria">  Acessório  </a>
+
+
+</div>
+
+<section class="loja-aleatoria">
+  <h2 class="titulo-aleatoria">Produtos em Destaque</h2>
+
+  <div class="grid-aleatoria">
+
+    <div class="card-aleatoria">
+      <img src="https://m.media-amazon.com/images/I/51obscu0sfL._AC_SY1000_.jpg" alt="Camiseta Casual">
+      <h3>Camiseta Casual</h3>
+      <p class="preco-aleatoria">R$ 79,90</p>
+      <button>Comprar</button>
+    </div>
+
+
+    <div class="card-aleatoria">
+      <img src="https://down-br.img.susercontent.com/file/5c784eae215117b0f2db7fcc88d34a16" alt="Colar Elegante">
+      <h3>Colar Elegante</h3>
+      <p class="preco-aleatoria">R$ 49,90</p>
+      <button>Comprar</button>
+    </div>
+
+ 
+    <div class="card-aleatoria">
+      <img src="https://images.tcdn.com.br/img/img_prod/1096377/batom_vermelho_vivo_cremoso_46_1029_1_31990f4eff3b4613b7a7c9ae7d381be0.jpg" alt="Batom Vermelho">
+      <h3>Batom Vermelho</h3>
+      <p class="preco-aleatoria">R$ 39,90</p>
+      <button>Comprar</button>
+    </div>
+
+
+    <div class="card-aleatoria">
+      <img src="https://grupooscar.vteximg.com.br/arquivos/ids/1536544/e069-007-01-277201-preto-branco.webp.webp?v=638820731086600000" alt="Tênis Preto">
+      <h3>Tênis Preto</h3>
+      <p class="preco-aleatoria">R$ 149,90</p>
+      <button>Comprar</button>
+    </div>
+
+
+    <div class="card-aleatoria">
+      <img src="https://images.tcdn.com.br/img/img_prod/770996/pulseira_de_prata_coracao_vazado_medio_19cm_267_1_7d408c5a0f27da295d151719656fe348.jpg" alt="Pulseira Prata">
+      <h3>Pulseira Prata</h3>
+      <p class="preco-aleatoria">R$ 59,90</p>
+      <button>Comprar</button>
+    </div>
+
+
+    <div class="card-aleatoria">
+      <img src="https://www.perfumariasumire.com.br/media/catalog/product/c/o/corretivo_li_quido_ruby_rose_melu_rr18001_c00_.jpg?optimize=medium&bg-color=255,255,255&fit=bounds&height=563&width=553&canvas=553:563" alt="Corretivo líquido">
+      <h3>Corretivo Líquido</h3>
+      <p class="preco-aleatoria">R$ 79,90</p>
+      <button>Comprar</button>
+    </div>
+
+
+    <div class="card-aleatoria">
+      <img src="https://mmstoreshoes.com.br/wp-content/uploads/2024/07/Bota-de-Cano-Alto-Caramelo-e-Salto-Bloco-Loja-MM-Store-Shoes-2.jpeg" alt="Bota Cano Alto">
+      <h3>Bota Cano Alto</h3>
+      <p class="preco-aleatoria">R$ 179,90</p>
+      <button>Comprar</button>
+    </div>
+
+    <div class="card-aleatoria">
+      <img src="https://cdn.sistemawbuy.com.br/arquivos/3c62454ab52ef4cdc27aef7d0f2ac0e1/produtos/65566e753c26f/sandalia-feminina-salto-fino-prata-c4-6557d75ae82eb.jpg" alt="Sandália Elegante">
+      <h3>Sandália Elegante</h3>
+      <p class="preco-aleatoria">R$ 89,90</p>
+      <button>Comprar</button>
+    </div>
+  </div>
+</section>
+<script src="../js/js.js"></script>
 
 </body>
 </html>

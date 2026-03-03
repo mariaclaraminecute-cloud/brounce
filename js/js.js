@@ -1,13 +1,25 @@
-const btn = document.querySelector(".tamanho-btn");
-const opcoes = document.querySelector(".tamanho-opcoes");
+function buscarProduto() {
+    const input = document.querySelector('.buscar');
+    const termo = input.value.trim();
 
-btn.addEventListener("click", () => {
-  opcoes.style.display = opcoes.style.display === "block" ? "none" : "block";
-});
+    if (!termo) return alert("Digite algo para buscar!");
 
+    fetch('http://localhost:8080/produtos')
+        .then(res => res.json())
+        .then(produtos => {
+            const ul = document.getElementById('listaProdutos');
+            ul.innerHTML = '';
 
-document.addEventListener("click", (e) => {
-  if (!btn.contains(e.target) && !opcoes.contains(e.target)) {
-    opcoes.style.display = "none";
-  }
-});
+            const filtrados = produtos.filter(p => p.nome.toLowerCase().includes(termo.toLowerCase()));
+
+            if (filtrados.length === 0) {
+                ul.innerHTML = '<li>Nenhum produto encontrado</li>';
+            } else {
+                filtrados.forEach(p => {
+                    const li = document.createElement('li');
+                    li.textContent = `${p.nome} - R$ ${p.preco}`;
+                    ul.appendChild(li);
+                });
+            }
+        });
+}

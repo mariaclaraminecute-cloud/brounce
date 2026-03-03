@@ -1,0 +1,125 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+   font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background-color: #fff6ef;
+}
+
+
+
+header {
+  background: linear-gradient(to right, #804e2b, #4c1d06);
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+
+
+.carrinho-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+
+
+.item-carrinho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.item-carrinho img {
+  width: 120px;
+  border-radius: 10px;
+}
+
+.info {
+  flex: 1;
+  margin-left: 20px;
+}
+
+.info h2 {
+  color: #804e2b;
+  margin-bottom: 10px;
+}
+
+.info p {
+  font-weight: bold;
+  color: #d28a24;
+  margin-bottom: 15px;
+}
+
+
+
+.quantidade {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quantidade button {
+  background-color: #e7be99;
+  border: none;
+  padding: 5px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.quantidade button:hover {
+  background-color: #d28a24;
+  color: white;
+}
+
+
+.remover button {
+  background-color: transparent;
+  border: 2px solid #804e2b;
+  padding: 8px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #804e2b;
+}
+
+.remover button:hover {
+  background-color: #804e2b;
+  color: white;
+}
+
+
+.resumo {
+  text-align: right;
+  margin-top: 30px;
+}
+
+.resumo h3 {
+  margin-bottom: 15px;
+  color: #4c1d06;
+}
+
+.finalizar {
+  background: linear-gradient(135deg, #804e2b, #d28a24);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.finalizar:hover {
+  transform: scale(1.05);
+}
