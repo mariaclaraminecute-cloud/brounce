@@ -1,25 +1,12 @@
-
 let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
 
 function adicionarAoCarrinho(produto) {
   carrinho.push(produto);
   localStorage.setItem("carrinho", JSON.stringify(carrinho));
   console.log("Produto adicionado ao carrinho:", produto);
 
-  const url = "https://jsonplaceholder.typicode.com/posts";
-  console.log("HTTP POST Adicionar Produto enviado para:", url);
-  console.log("Body enviado:", produto);
-
-  fetch(url, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(produto)
-  })
-    .then(res => res.json())
-    .then(data => console.log("Resposta do POST Adicionar:", data))
-    .catch(err => console.error("Erro no POST Adicionar:", err));
-
-  atualizarCarrinho();
+  atualizarCarrinhoComQuery();
 }
 
 function removerDoCarrinho(index) {
@@ -27,20 +14,7 @@ function removerDoCarrinho(index) {
   localStorage.setItem("carrinho", JSON.stringify(carrinho));
   console.log("Produto removido do carrinho:", produto);
 
-  const url = `https://jsonplaceholder.typicode.com/posts/${index}`;
-  console.log("HTTP DELETE Remover Produto enviado para:", url);
-  console.log("Body enviado:", produto);
-
-  fetch(url, {
-    method: "DELETE",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(produto)
-  })
-    .then(res => res.json())
-    .then(data => console.log("Resposta do DELETE Remover:", data))
-    .catch(err => console.error("Erro no DELETE Remover:", err));
-
-  atualizarCarrinho();
+  atualizarCarrinhoComQuery();
 }
 
 function atualizarCarrinho() {
@@ -96,38 +70,34 @@ function finalizarCompra() {
     return;
   }
 
-  const url = "https://jsonplaceholder.typicode.com/posts";
-  const body = {
-    produtos: carrinho,
-    total: carrinho.reduce(
-      (acc, item) => acc + parseFloat(item.preco.replace(",", ".")),
-      0
-    )
-  };
+  alert("Compra finalizada com sucesso!");
+  carrinho = [];
+  localStorage.setItem("carrinho", JSON.stringify(carrinho));
 
-  console.log("HTTP POST Finalizar Compra enviado para:", url);
-  console.log("Body enviado:", body);
-
-  fetch(url, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body)
-  })
-    .then(res => res.json())
-    .then(data => {
-      console.log("Dados recebidos da Finalização:", data);
-      alert("Compra finalizada com sucesso!");
-      carrinho = [];
-      localStorage.setItem("carrinho", JSON.stringify(carrinho));
-      atualizarCarrinho();
-    })
-    .catch(err => console.error("Erro na Finalização:", err));
+  atualizarCarrinhoComQuery(); 
 }
+
+
+function atualizarQueryCarrinho() {
+  const params = new URLSearchParams();
+  carrinho.forEach(item => {
+    params.append("item", `${item.nome}-${item.preco}`);
+  });
+
+  history.replaceState(null, "", "?" + params.toString());
+}
+
+
+function atualizarCarrinhoComQuery() {
+  atualizarCarrinho();
+  atualizarQueryCarrinho();
+}
+
 
 const categorias = [
   { card: "card-aleatoria", preco: "preco-aleatoria" },
   { card: "card-maquiagem", preco: "preco-maquiagem" },
-  { card: "card-roupa", preco: "preco" },
+  { card: "card-roupa", preco: "preco-roupa" },
   { card: "card-sapato", preco: "preco-sapato" },
   { card: "card-acessorio", preco: "preco-acessorio" }
 ];
@@ -150,57 +120,7 @@ categorias.forEach(categoria => {
   });
 });
 
-function pesquisar() {
-  const termo = document.getElementById("campoBusca")?.value;
-  if (!termo || termo.trim() === "") {
-    alert("Digite algo para buscar");
-    return;
-  }
-
-  const url = `https://jsonplaceholder.typicode.com/posts?q=${encodeURIComponent(termo)}`;
-  console.log("HTTP GET enviado para:", url);
-
-  fetch(url, { method: "GET" })
-    .then(res => res.json())
-    .then(data => {
-      console.log("Dados GET recebidos:", data);
-      const resultado = document.getElementById("resultado");
-      if (resultado) resultado.innerHTML = data.map(item => `<p>${item.title}</p>`).join("");
-    })
-    .catch(err => console.error("Erro GET:", err));
-}
-
-function login(event) {
-  event.preventDefault();
-  const email = document.getElementById("email")?.value;
-  const senha = document.getElementById("senha")?.value;
-
-  if (!email || !senha) {
-    alert("Preencha todos os campos");
-    return;
-  }
-
-  const url = "https://jsonplaceholder.typicode.com/posts";
-  console.log("HTTP POST Login enviado para:", url);
-  console.log("Body enviado:", { email, senha });
-
-  fetch(url, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, senha })
-  })
-    .then(res => res.json())
-    .then(data => {
-      console.log("Dados recebidos do Login:", data);
-      alert("Login simulado com sucesso!");
-      window.location.href = "index.html";
-    })
-    .catch(err => console.error("Erro no Login:", err));
-}
 
 document.addEventListener("DOMContentLoaded", () => {
-  const formLogin = document.getElementById("formLogin");
-  if (formLogin) formLogin.addEventListener("submit", login);
-
-  atualizarCarrinho();
+  atualizarCarrinhoComQuery(); 
 });
