@@ -1,4 +1,11 @@
-// Função de pesquisa
+
+function atualizarQuery(chave, valor) {
+  const params = new URLSearchParams(window.location.search);
+  params.set(chave, valor);
+  window.history.replaceState(null, "", `${window.location.pathname}?${params.toString()}`);
+}
+
+
 function pesquisar() {
   const campo = document.getElementById("campoBusca");
   if (!campo) return;
@@ -9,11 +16,9 @@ function pesquisar() {
     return;
   }
 
-  // Atualiza URL com ?busca=termo
-  const newUrl = `${window.location.pathname}?busca=${encodeURIComponent(termo)}`;
-  window.history.replaceState(null, "", newUrl);
+  atualizarQuery("busca", termo);
 
-  // Envia GET
+
   const url = `https://jsonplaceholder.typicode.com/posts?q=${encodeURIComponent(termo)}`;
   console.log("HTTP GET enviado para:", url);
 
@@ -31,11 +36,35 @@ function pesquisar() {
     .catch(err => console.error("Erro:", err));
 }
 
-// Preenche input e pesquisa se já houver query na URL
-const params = new URLSearchParams(window.location.search);
-const termoQuery = params.get("busca");
+
+function enviarPUT() {
+  const usuario = {
+    notificacoesEmail: document.getElementById("notificacoesEmail")?.checked,
+    notificacoesApp: document.getElementById("notificacoesApp")?.checked,
+    tema: document.getElementById("tema")?.value
+  };
+
+  fetch("https://jsonplaceholder.typicode.com/posts/1", { // URL válida para PUT
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(usuario)
+  })
+  .then(res => {
+    console.log("Status:", res.status);
+    return res.json();
+  })
+  .then(data => console.log("PUT enviado:", data))
+  .catch(err => console.error("Erro no PUT:", err));
+}
+
+
+document.getElementById("btnBuscar")?.addEventListener("click", pesquisar);
+document.getElementById("btnSalvar")?.addEventListener("click", enviarPUT);
+
+
+const termoQuery = new URLSearchParams(window.location.search).get("busca");
 if (termoQuery) {
   const campo = document.getElementById("campoBusca");
   if (campo) campo.value = termoQuery;
-  pesquisar();
+  pesquisar(); 
 }
